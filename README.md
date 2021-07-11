@@ -347,6 +347,8 @@ int main(int argc, char * argv[]) {
 #define START_JUDGE() FILE * input = fopen(argv[1], "r"); FILE * stdoutput = fopen(argv[2], "r"); FILE * output = fopen(argv[3], "r");
 #define EXIT_JUDGE(result) fclose(input); fclose(output); fclose(stdoutput); return result;
 ```
+## 并发评测
+本功能在concurent_judge分支下进行，它只是一个实验性的功能，因为我自己也不清楚对于一个题目的样例的并发控制应该由judger负责，还是高层的task queue manager负责。当judgeMode为并发模式下，题目将并发地对一个题目的多个样例进行评测。行为是judger开启多个box和killer进程进行评测。以提高评测效率。最大并发数为MAX_BOX_PROCESS。
 
 ## 简单演示
 
